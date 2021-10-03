@@ -11,7 +11,7 @@ main.set('views', path.join(__dirname, 'vistas')); //Establecemos la ruta para n
 
 //Importamos rutas
 const salaRoutes = require('./rutas/routes.js');
-const { urlencoded } = require('express');
+
 
 //Middleware
 

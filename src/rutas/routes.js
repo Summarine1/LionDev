@@ -2,7 +2,8 @@ const express = require ('express');
 const router = express.Router();
 const salaController = require('../controladores/salaControlador');
 
-router.get('/',salaController.list);
-router.post('/add', salaController.save);
+router.get('/',salaController.listReser);
+router.post('/addReser', salaController.saveReser);
+router.post('/addSala', salaController.saveSala);
 
 module.exports = router;
