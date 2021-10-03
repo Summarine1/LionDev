@@ -15,12 +15,12 @@ controller.listReser = (req, res) => {
                 }
                 res.render('salas', {
                     dataSala: salas,
-                    dataReser:rese
+                    dataReser: rese
                 });
             });
-         
+
         });
-        
+
 
     });
 };
@@ -35,28 +35,50 @@ controller.saveReser = (req, res) => {
 
     if (diffHours <= 2) {
         req.getConnection((err, conn) => {
-
-            conn.query("INSERT INTO  reservacion(`ID_sala`, `hora_inicial`, `hora_final`) VALUES (???) ", [req.data], (err, rows) => {
-
-                res.redirect('/')
+            conn.query("SELECT * FROM reservacion WHERE\
+            hora_inicial BETWEEN ? AND\
+            ? OR hora_final BETWEEN ? AND\
+            ?", [req.body.hora_inicial, req.body.hora_final, req.body.hora_inicial, req.body.hora_final], (err, rows) => {
+                if (err) {
+                    res.json(err);
+                    return;
+                }
+                if(rows.lenght==0){
+                    conn.query("INSERT INTO `reservacion` (`ID_sala`, `hora_inicial`, `hora_final`)\
+                VALUES (?,?,?) ", [req.body.IDSala,req.body.hora_inicial+':00',req.body.hora_final+':00'], (err, rows) => {
+                    console.log(err);
+                    res.redirect('/');
+                    
+                });
+                }
+                else{
+                   
+                    res.redirect('/');
+                }
+              
+                
             });
+
+
         })
+
+
     } else {
-        res.json("error ;v");
+     
     }
 };
 
 controller.saveSala = (req, res) => {
-    
 
-   
-        req.getConnection((err, conn) => {
 
-            conn.query("INSERT INTO sala (`nombre_sala`) VALUES (?) ", [req.body.nombre_sala], (err, rows) => {
-                console.log(err);
-                res.redirect('/')
-            });
-        })
+
+    req.getConnection((err, conn) => {
+
+        conn.query("INSERT INTO sala ('nombre_sala') VALUES (?) ", [req.body.nombre_sala], (err, rows) => {
+            console.log(err);
+            res.redirect('/');
+        });
+    })
 
 };
 

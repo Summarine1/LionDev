@@ -6,10 +6,11 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>ID Reservacion</th>
+                        <th>ID Sala</th>
                         <th>Hora de inicio</th>
                         <th>Hora de finalización</th>
-                        <th>Acciones</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,7 +18,10 @@
                         <% for (var i=0;i < dataReser.length;i++){ %>
                             <tr>
                                 <td>
-                                    <%= (i+1) %>
+                                    <%= dataReser[i].ID %>
+                                </td>
+                                <td>
+                                    <%= dataReser[i].ID_sala %>
                                 </td>
                                 <td>
                                     <%= dataReser[i].hora_inicial %>
@@ -41,6 +45,7 @@
                     <tr>   
                         <th>ID</th>
                         <th>Nombre de la sala</th>
+                        <th></th>
                        
                     </tr>
                 </thead>
@@ -50,7 +55,7 @@
                         <% for (var i=0;i < dataSala.length;i++){ %>
                             <tr>
                                 <td>
-                                    <%= (i+1) %>
+                                    <%= dataSala[i].ID %>
                                 </td>
                                 <td>
                                     <%= dataSala[i].nombre_sala %>
@@ -83,6 +88,7 @@
                     </div>
                     <br>
                     <div class="form-group">
+                        
                         <label for="InputHoraInicio" class="form-label">Hora de inicio</label>
                         <input type="datetime-local" class="form-control" id="InputHoraInicio" name="hora_inicial">
                     </div>
