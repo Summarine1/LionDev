@@ -1,0 +1,31 @@
+<%-include('partes/cabecera');-%>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+        </div>
+        <div class="col-md-3">
+            <form action="/add" method="post">
+                <br>
+                <div class="mb-2">
+                    <div class="form-group">
+                        <label for="InputHoraInicio" class="form-label">Hora de inicio</label>
+                        <input type="datetime-local" class="form-control" id="InputHoraInicio" name="hora_inicial">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="InputHoraFinal" class="form-label">Hora de fin</label>
+                        <input type="datetime-local" class="form-control" id="InputHoraFinal" name="hora_final">
+                        <br>
+                        <button type="submit" class="btn btn-dark">Reservar</button>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+</div>
+
+<%-include('partes/pie');-%>
