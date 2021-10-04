@@ -1,3 +1,4 @@
+//Proyecto creado por César Armando Rodríguez Ortega 
 //Para ejecutar con nodemon, el comando a ejecutar es "npm run dev"
 //Los modulos utilizados para ejecutar este proyecto son:
     //"ejs": "^3.1.6",
@@ -6,6 +7,7 @@
     //"mysql": "^2.18.1",
     //"request": "^2.88.2"
     //"nodemon": "^2.0.13"
+    
 
 setInterval(borradoAutomatico,30000);  //La funcion borradoAutomatico() se ejecuta cada 30 segundos.
                                                                                                              
