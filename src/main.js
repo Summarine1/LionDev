@@ -35,7 +35,7 @@ main.use(connection(mysql, { //Configuracion del servidor mysql
     host: 'localhost',
     user: 'root',
     password: '',
-    port: '3306', //El puerto de mi localhost es el 80, si el tuyo es diferente cambia este valor por el puerto de tu mysql
+    port: '3306', //El puerto de mi localhost es el 3306, si el tuyo es diferente cambia este valor por el puerto de tu mysql
     database: 'crudliondev' //Nombre de la base de datos
 
 }, 'single'));
