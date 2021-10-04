@@ -7,4 +7,5 @@ router.post('/addReser', salaController.saveReser);
 router.post('/addSala', salaController.saveSala);
 router.get('/delete/:id', salaController.delete);
 
+
 module.exports = router;

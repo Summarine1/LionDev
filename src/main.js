@@ -1,4 +1,8 @@
 //Para ejecutar con nodemon, el comando es "npm run dev"
+
+setInterval(borradoAutomatico,60000);  
+                                                                                                             
+
 const express = require('express');
 const main = express();
 const path = require('path');
@@ -32,3 +36,7 @@ main.use('/', salaRoutes);
 main.listen(main.get('port'), () => {
     console.log("Server iniciado en puerto 3000");
 });
+
+function borradoAutomatico(){
+            
+}
