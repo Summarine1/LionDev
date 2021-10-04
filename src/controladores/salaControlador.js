@@ -43,7 +43,7 @@ controller.saveReser = (req, res) => {
                     res.json(err);
                     return;
                 }
-                if(rows.lenght==0){
+                if(rows.length==0){
                     conn.query("INSERT INTO `reservacion` (`ID_sala`, `hora_inicial`, `hora_final`)\
                 VALUES (?,?,?) ", [req.body.IDSala,req.body.hora_inicial+':00',req.body.hora_final+':00'], (err, rows) => {
                     console.log(err);
@@ -52,7 +52,8 @@ controller.saveReser = (req, res) => {
                 });
                 }
                 else{
-                   
+                    console.log(rows);
+                    console.log("Ingrese un horario que no este ocupado");
                     res.redirect('/');
                 }
               
@@ -62,19 +63,15 @@ controller.saveReser = (req, res) => {
 
         })
 
-
     } else {
-     
+     console.log("Ingrese un lapso entre dos horas");
     }
 };
 
 controller.saveSala = (req, res) => {
-
-
-
     req.getConnection((err, conn) => {
 
-        conn.query("INSERT INTO sala ('nombre_sala') VALUES (?) ", [req.body.nombre_sala], (err, rows) => {
+        conn.query("INSERT INTO `sala` (`nombre_sala`) VALUES (?) ", [req.body.nombre_sala], (err, rows) => {
             console.log(err);
             res.redirect('/');
         });
@@ -82,6 +79,18 @@ controller.saveSala = (req, res) => {
 
 };
 
+
+controller.delete = (req,res)=>{
+    const { id } = req.params;
+    req.getConnection((err,conn)=>{
+        console.log()
+        conn.query("DELETE FROM reservacion WHERE ID =?", [id], (err,rows)=>{
+            res.redirect('/');
+            
+        });
+        
+    })
+};
 
 
 module.exports = controller;

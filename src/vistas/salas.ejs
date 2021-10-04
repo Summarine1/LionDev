@@ -10,7 +10,9 @@
                         <th>ID Sala</th>
                         <th>Hora de inicio</th>
                         <th>Hora de finalización</th>
-                        <th></th>
+                        <th>
+                            
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +31,7 @@
                                 <td>
                                     <%= dataReser[i].hora_final %>
                                 </td>
+                                <td><a href="/delete/<%= dataReser[i].ID%>" class="btn btn-danger" name="btn_borrar">Borrar</a></td>
                             </tr>
                             <% } %>
                                 <% } %>
