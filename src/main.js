@@ -1,6 +1,6 @@
 //Para ejecutar con nodemon, el comando es "npm run dev"
 
-setInterval(borradoAutomatico,60000);  
+setInterval(borradoAutomatico,30000);  //La funcion borradoAutomatico() se ejecuta cada 30 segundos.
                                                                                                              
 
 const express = require('express');
@@ -8,6 +8,8 @@ const main = express();
 const path = require('path');
 const mysql = require('mysql');
 const connection = require('express-myconnection');
+const request = require('request');
+
 //Config
 main.set('port', process.env.PORT || 3000)//Extablecemos el puerto del servidor.
 main.set('view engine', 'ejs');//Utilizaremos ejs como motor de plantilla.
@@ -15,6 +17,7 @@ main.set('views', path.join(__dirname, 'vistas')); //Establecemos la ruta para n
 
 //Importamos rutas
 const salaRoutes = require('./rutas/routes.js');
+
 
 
 //Middleware
@@ -37,6 +40,6 @@ main.listen(main.get('port'), () => {
     console.log("Server iniciado en puerto 3000");
 });
 
-function borradoAutomatico(){
-            
+function borradoAutomatico(){//Esta funcion ejecuta el controlador de borrado automatico la cual borra las sesion es caducadas
+    request('http://localhost:3000/borrarAuto');
 }
